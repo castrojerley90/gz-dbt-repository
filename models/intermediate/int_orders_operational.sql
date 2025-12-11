@@ -22,6 +22,7 @@ select
     , om.margin 
     , sh.shipping_fee
     , sh.logcost
+    , sh.ship_cost
 from orders_margin as om
 left join shipping as sh 
 on om.orders_id = sh.orders_id

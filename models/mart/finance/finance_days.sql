@@ -10,6 +10,8 @@ with operational_margin_table AS (
             , ROUND(SUM(shipping_fee),2) AS total_shipping_fees
             , ROUND(SUM(logcost),2) AS total_log_cost
             , SUM(quantity) AS nb_products_sold
+            , ROUND(SUM(margin),2) AS margin
+            , ROUND(SUM(ship_cost),2) AS ship_cost
         from {{ref("int_orders_operational")}}
         group by date_date 
 )
@@ -24,5 +26,7 @@ select
     , total_shipping_fees
     , total_log_cost
     , nb_products_sold
+    , margin
+    , ship_cost
 from operational_margin_table
 order by date_date desc

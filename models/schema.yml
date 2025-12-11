@@ -65,3 +65,30 @@ sources:
        - name: facebook
          identifier: raw_gz_facebook
          description: contains costs of marketing campaigns with Facebook
+models: 
+  - name: campaigns
+    identifier: int_campaigns 
+    description: Merging data from Google/Bing/FB and Criteo marketing campaigns 
+    columns:
+      - name: date_date
+        description: date of the campaign
+      - name: paid_source 
+        description: FB, Criteo, Google or Bing 
+      - name: campaign_key
+        description: id of the campaign
+    tests: 
+      - unique: 
+          column_name: "(CAST(date_date AS STRING)|| '-' || paid_source || '-' || campaign_key )"
+  - name: campaigns_days
+    identifier: int_campaigns_days
+    description: campaigns from Google/Bing/Criteo/Facebook (union all by day DESC)
+    columns:
+       - name: date_date
+         description: date
+       - name: paid_source
+         description: blabla
+       - name: campaign_key
+         description: blabla
+    tests:
+      - unique:
+          column_name: "(CAST(date_date AS STRING)|| '-'  || paid_source || '-' || campaign_key)"
