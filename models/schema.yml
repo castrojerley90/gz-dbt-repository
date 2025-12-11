@@ -92,3 +92,11 @@ models:
     tests:
       - unique:
           column_name: "(CAST(date_date AS STRING)|| '-'  || paid_source || '-' || campaign_key)"
+  - name: finance_campaigns_days
+    identifier: finance_campaigns_days
+    description: Merging campaign data 
+    columns:
+      - name: date_date
+        tests: 
+          - unique
+          

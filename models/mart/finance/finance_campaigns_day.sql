@@ -14,7 +14,7 @@ finance_days_table as (
 select 
 
      c.date_date AS date
-     , (f.operational_margin - c.total_ads_cost) AS ads_margin
+     , ROUND((f.operational_margin - c.total_ads_cost),2) AS ads_margin
      , f.average_basket
      , f.operational_margin
      , c.total_ads_cost AS ads_cost
@@ -23,10 +23,10 @@ select
      , f.nb_products_sold AS quantity
      , f.total_revenue AS revenue
      , f.total_purchase_cost AS purchase_cost
-        ---- margin
+     , f.margin AS margin
      , f.total_shipping_fees AS shipping_fee
      , f.total_log_cost AS log_cost
-       --- ship_cost
+     , f.ship_cost AS ship_cost
 
 from campaings_day_table as c
 join finance_days_table as f 
