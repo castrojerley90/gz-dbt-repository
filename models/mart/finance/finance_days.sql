@@ -1,3 +1,4 @@
+
 with operational_margin_table AS (
     
         select
